@@ -1,58 +1,60 @@
+# AWS Architecture Center Code Samples
 
-# Welcome to your CDK Python project!
+This repository contains sample code implementations for the [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/) and its related AWS Architecture Center guides.
 
-This is a blank project for CDK development with Python.
+It showcases production-grade patterns and best practices for a wide range of use cases and implementation types — including storage, security, compute, network architecture, compliance, and more.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Each guide has its own folder containing self-contained, deployable stacks and explanatory documentation with architecture diagrams. These are designed to help individuals and teams implement secure, reliable, cost-effective, and operationally robust solutions in the cloud.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+## Key Goals
 
-To manually create a virtualenv on MacOS and Linux:
+- Reinforce Well-Architected Framework principles
+- Provide real-world, hands-on code for AWS best practices
+- Support a wide range of application types and deployment patterns
 
-```
-$ python3 -m venv .venv
-```
+## Guides
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+- [`encryption_best_practices/`](./encryption_best_practices) — Implements encryption and key management best practices using S3, KMS, and AWS Config.
 
-```
-$ source .venv/bin/activate
-```
+> More guides coming soon. Stay tuned!
 
-If you are a Windows platform, you would activate the virtualenv like this:
+## Getting Started
 
-```
-% .venv\Scripts\activate.bat
-```
+You’ll need:
 
-Once the virtualenv is activated, you can install the required dependencies.
+- AWS CLI & credentials configured
+- Python 3.8+
+- AWS CDK installed
 
-```
-$ pip install -r requirements.txt
+1. Install Python dependencies:
+```bash
+pip install -r requirements.txt
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
-
+2. Bootstrap your AWS environment (only required once per environment/account):
+```bash
+cdk bootstrap
 ```
-$ cdk synth
+
+3. Deploy the stack with a specific context and optionally the stack name (e.g. topic=encryption-best-practices):
+```bash
+cdk deploy --context topic=<topic_name> <stack_name>
 ```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+## Cleanup
 
-## Useful commands
+To remove all deployed resources:
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+```bash
+cdk destroy
+```
 
-Enjoy!
+Optionally you can provide the context for quicker compilation and stack name to destroy a specific stack:
+
+```bash
+cdk destroy --context topic=<topic_name> <stack_name>
+```
+
+## About the Author
+
+This repository is maintained by [Ethan Hollins](https://www.linkedin.com/in/ethanhollins/), a certified [AWS Solutions Architect – Professional](https://aws.amazon.com/certification/certified-solutions-architect-professional/), with a focus on spreading digestible best practice sample code based on AWS WAFR guides.
