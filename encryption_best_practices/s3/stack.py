@@ -7,6 +7,7 @@ from aws_cdk import (
     aws_config as config,
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
+    # aws_certificatemanager as acm,
 )
 from constructs import Construct
 
@@ -175,6 +176,22 @@ class S3EncryptionBestPracticesStack(Stack):
         )
 
         """
+        ACM Certificate for HTTPS Custom Domain
+
+        The certificate must be created in the us-east-1 region for CloudFront.
+        This example assumes the certificate has already been created and validated.
+        Replace the certificate ARN and domain name with your actual values.
+        """
+
+        # acm_cert = acm.Certificate.from_certificate_arn(
+        #     self,
+        #     "EncbpAcmCert",
+        #     "arn:aws:acm:us-east-1:111122223333:certificate/abcd1234-abcd-1234-abcd-1234abcd5678"
+        # )
+
+        # domain_name = "example.com"
+
+        """
         CloudFront Resources
 
         These policies restrict access to S3 objects so they can only be served through
@@ -216,6 +233,9 @@ class S3EncryptionBestPracticesStack(Stack):
             ),
             price_class=cloudfront.PriceClass.PRICE_CLASS_ALL,
             enable_logging=False,
+            # # Uncomment these lines if using a custom domain with the ACM certificate above
+            # domain_names=[domain_name],
+            # certificate=acm_cert,
         )
 
         # Allow read access to CloudFront distribution
