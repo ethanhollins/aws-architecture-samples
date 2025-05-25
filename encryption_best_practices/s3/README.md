@@ -1,4 +1,4 @@
-# 🪣 S3 Encryption Best Practices
+# S3 Encryption Best Practices
 
 This module demonstrates how to enforce encryption and secure access to an Amazon S3 bucket in alignment with the [Encryption best practices for Amazon S3](https://docs.aws.amazon.com/prescriptive-guidance/latest/encryption-best-practices/s3.html) guide.
 
@@ -13,25 +13,27 @@ It includes the following implementations:
 ## Features Demonstrated
 
 - **KMS Encryption**
+
   All S3 objects are encrypted using a customer-managed KMS key with key rotation enabled.
 
 - **Policy Enforcement**
+
   Denies any upload that:
   - Does not use KMS encryption
   - Grants public access via ACL or grant headers
   - Is made over an insecure (non-SSL) connection
 
 - **CloudFront Integration**
+
   - CloudFront OAC protects access to S3
   - Bucket is only accessible through the CloudFront distribution
 
 - **AWS Config Rules**
+
   - `s3-bucket-server-side-encryption-enabled`
   - `s3-bucket-ssl-requests-only`
 
 - **Optional**: Cross-account access and custom domain configuration (commented out but included for demonstration)
-
----
 
 ## Architecture Diagram
 
@@ -40,15 +42,18 @@ TODO: Add diagram here.
 > ⚠️ **Important Notes:**
 >
 > **AWS Config Required**
+>
 > This stack uses AWS Config managed rules, which require a configuration recorder and delivery channel to be active in the target region.
 > If AWS Config is not yet set up, follow this guide:
 > https://docs.aws.amazon.com/config/latest/developerguide/setting-up.html
 >
 > **ACM Certificate**
+>
 > The CloudFront distribution can be configured to use a custom domain with an ACM certificate (commented out in code).
 > Certificates must be created in `us-east-1` for CloudFront to use them.
 >
 > **External Account Access**
+>
 > Example permissions to support cross-account access are included but commented out.
 > Update the code with a valid account ID to enable.
 

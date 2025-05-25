@@ -1,6 +1,6 @@
 # AWS Architecture Center Code Samples
 
-This repository contains sample code implementations for the [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/) and its related AWS Architecture Center guides.
+This repository contains sample code implementations for the [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/) and its related [AWS Architecture Center](https://aws.amazon.com/architecture/) guides.
 
 It showcases production-grade patterns and best practices for a wide range of use cases and implementation types — including storage, security, compute, network architecture, compliance, and more.
 
@@ -14,7 +14,7 @@ Each guide has its own folder containing self-contained, deployable stacks and e
 
 ## Guides
 
-- [`encryption_best_practices/`](./encryption_best_practices) — Implements encryption and key management best practices using S3, KMS, and AWS Config.
+- [`encryption_best_practices/`](./encryption_best_practices) — Implements encryption best practices for a range of AWS services including S3, KMS, RDS etc.
 
 > More guides coming soon. Stay tuned!
 

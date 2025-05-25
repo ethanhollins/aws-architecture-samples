@@ -23,12 +23,12 @@ Each subfolder contains a self-contained CDK stack demonstrating the best practi
 
 All stacks are independently deployable and are also registered in this folder’s `stacks.register_stacks`.
 
+## Deployment Instructions
+
 > ⚠️ **Important Note:**
 > Some stacks rely on AWS Config managed rules (e.g., to monitor encryption or enforce compliance).
 > These require a **Configuration Recorder** and **Delivery Channel** to be set up in the AWS region where you're deploying.
 > If AWS Config is not already set up in your account, follow the [AWS Config setup guide](https://docs.aws.amazon.com/config/latest/developerguide/setting-up.html) before deploying.
-
-## Deployment Instructions
 
 Ensure you have Python and AWS CDK installed.
 
