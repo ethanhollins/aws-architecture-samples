@@ -232,7 +232,7 @@ class S3EncryptionBestPracticesStack(Stack):
             )
         )
 
-        # external_account_id = "977407872120"  # Commented out since external account access is not currently in use
+        # external_account_id = "123456789012"  # Commented out since external account access is not currently in use
 
         # Deny read access except CloudFront distribution
         encbp_s3_bucket.add_to_resource_policy(
@@ -244,7 +244,7 @@ class S3EncryptionBestPracticesStack(Stack):
                 resources=[f"{encbp_s3_bucket.bucket_arn}/*"],
                 conditions={
                     "StringNotEquals": {"AWS:SourceArn": distribution.distribution_arn},
-                    # External account access commented out for now; remove comments if enabling cross-account access
+                    # # External account access commented out for now; remove comments if enabling cross-account access
                     # "StringNotEqualsIfExists": {
                     #     "aws:PrincipalArn": f"arn:aws:iam::{external_account_id}:root"
                     # }
@@ -266,9 +266,12 @@ class S3EncryptionBestPracticesStack(Stack):
                 conditions={
                     "StringNotEqualsIfExists": {
                         "AWS:SourceArn": distribution.distribution_arn,
-                        # External account ID excluded for now. If enabling external access,
-                        # uncomment above and define `external_account_id` appropriately.
-                        # "aws:PrincipalAccount": [self.account, external_account_id]
+                        "aws:PrincipalAccount": [
+                            self.account,
+                            # # External account ID excluded for now. If enabling external access,
+                            # # uncomment above and define `external_account_id` appropriately.
+                            # external_account_id
+                        ],
                     }
                 },
             )
